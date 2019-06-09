@@ -1,4 +1,4 @@
-export class OrderBook {
+export class OrderItem {
   private id: number
   private isSellOrder: boolean
   private price: number
