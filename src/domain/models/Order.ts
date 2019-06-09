@@ -4,12 +4,17 @@ export class Order {
   private buyOrderItems: OrderItem[]
   private sellOrderItems: OrderItem[]
 
+  constructor() {
+    this.buyOrderItems = []
+    this.sellOrderItems = []
+  }
+
   addOrderItem(args: {
-    id: number
+    id?: number
     isSellOrder: boolean
     rate: number
     size: number
-    fetchedAt: number
+    fetchedAt?: number
   }) {
     let orderItem = new OrderItem({
       id: args.id,

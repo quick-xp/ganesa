@@ -17,7 +17,7 @@ export class OrderItem {
     this._isSellOrder = args.isSellOrder
     this._rate = args.rate
     this._size = args.size
-    this._price = this._rate || 0 * this._size || 0
+    this._price = this._rate * this._size || 999_999_999
     this._fetchedAt = args.fetchedAt
   }
 
