@@ -29,7 +29,7 @@ export class Order {
   // 最安の売り注文
   // limit: 最安X件を取得
   // priceLimit: JPYの上限. これ以上の金額は無視する
-  selectLowSellOrders(limit: number, priceLimit: number) {
+  selectLowSellOrders(limit: number, priceLimit: number): OrderItem[] {
     let sellOrders = this.sellOrderItems.filter(
       item => item.price <= priceLimit
     )
