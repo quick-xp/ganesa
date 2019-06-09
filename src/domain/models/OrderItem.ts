@@ -1,21 +1,35 @@
 export class OrderItem {
-  private id: number
-  private isSellOrder: boolean
-  private price: number
-  private size: number
-  private fetchedAt: number
+  private _id: number
+  private _isSellOrder: boolean
+  private _price: number
+  private _rate: number
+  private _size: number
+  private _fetchedAt: number
 
   constructor(args: {
     id: number
     isSellOrder: boolean
-    price: number
+    rate: number
     size: number
     fetchedAt: number
   }) {
-    this.id = args.id
-    this.isSellOrder = args.isSellOrder
-    this.price = args.price
-    this.size = args.size
-    this.fetchedAt = args.fetchedAt
+    this._id = args.id
+    this._isSellOrder = args.isSellOrder
+    this._rate = args.rate
+    this._size = args.size
+    this._price = this._rate || 0 * this._size || 0
+    this._fetchedAt = args.fetchedAt
+  }
+
+  get isSellOrder(): boolean {
+    return this._isSellOrder
+  }
+
+  get price(): number {
+    return this._price
+  }
+
+  get rate(): number {
+    return this._rate
   }
 }
