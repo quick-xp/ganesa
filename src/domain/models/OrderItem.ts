@@ -3,14 +3,14 @@ export class OrderItem {
   private isSellOrder: boolean
   private price: number
   private size: number
-  private fetchedAt: Date
+  private fetchedAt: number
 
   constructor(args: {
-    id: number,
-    isSellOrder: boolean,
-    price: number,
-    size: number,
-    fetchedAt: Date
+    id: number
+    isSellOrder: boolean
+    price: number
+    size: number
+    fetchedAt: number
   }) {
     this.id = args.id
     this.isSellOrder = args.isSellOrder
