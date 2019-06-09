@@ -3,6 +3,7 @@ import { OrderItem } from './OrderItem'
 export class Order {
   private buyOrderItems: OrderItem[]
   private sellOrderItems: OrderItem[]
+  private historyLog: string[]
 
   constructor() {
     this.buyOrderItems = []
@@ -55,4 +56,12 @@ export class Order {
     return results
   }
   // 最高の買い注文
+
+  // 買い判定
+  // 1. 少し前と比較して安くなっている場合に買う
+  // 2. 暴落の場合はしばらく戻らないので買わない
+  // 3. 決められた予算以上のものは買わない
+  judgeBuy(): OrderItem[] {
+    return this.buyOrderItems
+  }
 }
