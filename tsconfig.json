@@ -17,5 +17,11 @@
   },
   "include": [
       "src/**/*"
-  ]
+  ],
+  "compilerOptions": {
+    "baseUrl": "./src/",
+    "paths": {
+      "#/*": ["*"]
+    }
+  }
 }
