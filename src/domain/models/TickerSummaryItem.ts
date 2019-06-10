@@ -20,7 +20,7 @@ export class TickerSummaryItem {
     this._bid = args.bid
     this._ask = args.ask
     this._tickerItems = args.tickerItems
-    if (this._bid === null || this._ask === null) {
+    if (this._bid == null || this._ask == null) {
       this.calcSummary(this._tickerItems)
     }
     this._timestamp = args.timestamp
@@ -38,10 +38,14 @@ export class TickerSummaryItem {
     return this._timestamp
   }
 
+  get tickerItems(): TickerItem[] {
+    return this._tickerItems
+  }
+
   calcSummary(tickerItems: TickerItem[]): void {
     if (tickerItems && tickerItems.length > 0) {
       this._bid = Math.max(...tickerItems.map(m => m.bid))
-      this._ask = Math.min(...tickerItems.map(m => m.bid))
+      this._ask = Math.min(...tickerItems.map(m => m.ask))
     }
   }
 }

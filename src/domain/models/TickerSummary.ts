@@ -48,6 +48,10 @@ export class TickerSummary {
     return this._bestAsk
   }
 
+  get tickerSummaryItems(): TickerSummaryItem[] {
+    return this._tickerSummaryItems
+  }
+
   addTickerItem(args: {
     id?: number
     bid: number
@@ -69,14 +73,20 @@ export class TickerSummary {
     startTime: string
     endTime: string
     sliceSecond: number
-  }): boolean {
+  }): TickerSummaryItem[] {
     this.startTime = args.startTime
     this.endTime = args.endTime
     this.sliceSecond = args.sliceSecond
 
-    for (let i = this._startTime; i < this._endTime; i += this.sliceSecond) {
+    for (
+      let i = this._startTime;
+      i < this._endTime;
+      i += this.sliceSecond * 100_0
+    ) {
       const tickers = this._tickerItems.filter(item => {
-        return item.timestamp >= i && item.timestamp < i + this.sliceSecond
+        return (
+          item.timestamp >= i && item.timestamp < i + this.sliceSecond * 100_0
+        )
       })
       if (tickers.length > 0) {
         let summaryItem = new TickerSummaryItem({
@@ -89,6 +99,7 @@ export class TickerSummary {
     }
     this._tickerSummaryItems =
       this._tickerSummaryItems.sort(t => t.timestamp) || []
-    return true
+
+    return this._tickerSummaryItems
   }
 }
