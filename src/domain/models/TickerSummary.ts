@@ -10,6 +10,7 @@ export class TickerSummary {
   private _endTime: number
   private _sliceSecond: number // 何秒間隔区切りのデータ
   private _tickerSummaryItem: TickerSummaryItem[]
+  private _tickerItem: TickerItem[]
 
   constructor(args: {
     id?: number
@@ -21,6 +22,8 @@ export class TickerSummary {
     this._startTime = args.startTime
     this._endTime = args.endTime
     this._sliceSecond = args.sliceSecond
+    this._tickerSummaryItem = []
+    this._tickerItem = []
   }
 
   get bestBid(): number {
@@ -29,5 +32,26 @@ export class TickerSummary {
 
   get bestAsk(): number {
     return this._bestAsk
+  }
+
+  addTickerItem(args: {
+    id?: number
+    bid: number
+    ask: number
+    timestamp: number
+  }): void {
+    this._tickerItem.push(
+      new TickerItem({
+        id: args.id,
+        bid: args.bid,
+        ask: args.ask,
+        timestamp: args.timestamp
+      })
+    )
+  }
+
+  // X秒区切りのサマリーデータを作成
+  calcSummary(): boolean {
+    return true
   }
 }
